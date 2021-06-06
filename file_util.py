@@ -3,6 +3,7 @@ import os
 
 import yaml
 
+
 def read_yaml(yaml_file):
     """
     Read yaml file
