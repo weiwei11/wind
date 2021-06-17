@@ -1,5 +1,6 @@
 # @author: ww
 import os
+import pickle
 
 import yaml
 
@@ -53,8 +54,20 @@ def makedirs(path, verbose=True, stdout=print):
             stdout(f'make dirs: {path}')
 
 
+def read_pickle(pkl_path):
+    with open(pkl_path, 'rb') as f:
+        return pickle.load(f)
+
+
+def save_pickle(data, pkl_path):
+    os.system('mkdir -p {}'.format(os.path.dirname(pkl_path)))
+    with open(pkl_path, 'wb') as f:
+        pickle.dump(data, f)
+
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
     # print(read_yaml('test_resource/test_read.yml'))
     # makedirs('a')
+
