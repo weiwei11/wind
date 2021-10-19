@@ -18,6 +18,22 @@ def get_hash():
     return hash_str
 
 
+def get_last_file_hash(filename):
+    """
+    Get the latest commit hash for file
+    :param filename:
+    :return:
+
+    >>> get_last_file_hash('git_info.py')
+    '0650ffee018272f630fea535df44e75f0e3224f4'
+    """
+    cmd_str = 'git log -1 --format="%H" {}'.format(filename)
+    exitcode, hash_str = subprocess.getstatusoutput(cmd_str)
+    if exitcode != 0:
+        hash_str = ''
+    return hash_str
+
+
 def get_author():
     """
     Get latest commit author name
